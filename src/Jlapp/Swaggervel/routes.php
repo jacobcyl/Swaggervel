@@ -21,7 +21,7 @@ Route::get(Config::get('swaggervel.api-docs-route'), function() {
         $appDir = base_path()."/".Config::get('swaggervel.app-dir');
         $docDir = Config::get('swaggervel.doc-dir');
 
-        if (!File::exists($docDir) || is_writable($docDir)) {
+        if (!File::exists($docDir) || !is_writable($docDir)) {
             // delete all existing documentation
             if (File::exists($docDir)) {
                 File::deleteDirectory($docDir);
